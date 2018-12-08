@@ -1,0 +1,1 @@
+Simple realization of test task 3
