@@ -19,10 +19,12 @@
         <c:forEach items="${items}" var="item">
             <jsp:useBean id="item" type="ru.sinnord.testtask.model.RowItem"/>
             <tr>
-                <td>${item.number}</td>
+                <td>${item.id}</td>
                 <td>${item.name}</td>
                 <td>
-                    <input type="text" value="${item.value}" name="${item.number}">
+                    <c:if test="${item.value != null}" >
+                        <input type="text" value="${item.value}" name="${item.id}">
+                    </c:if>
                 </td>
             </tr>
         </c:forEach>

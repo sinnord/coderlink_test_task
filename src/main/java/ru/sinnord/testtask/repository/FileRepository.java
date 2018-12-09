@@ -16,5 +16,5 @@ public interface FileRepository {
 
     List<RowItem> getAllItems();
 
-    RowItem getItemByNumber(Integer number);
+    RowItem getItem(Integer id);
 }

@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import ru.sinnord.testtask.model.RowItem;
 import ru.sinnord.testtask.repository.FileRepository;
 import ru.sinnord.testtask.repository.InMemoryFileRepository;
-import ru.sinnord.testtask.util.XmlUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -18,9 +17,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 10,    // 10 MB
-        maxFileSize = 1024 * 1024 * 50,        // 50 MB
-        maxRequestSize = 1024 * 1024 * 100)    // 100 MB
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 10,
+        maxFileSize = 1024 * 1024 * 50,
+        maxRequestSize = 1024 * 1024 * 100)
 public class EditFileServlet extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(EditFileServlet.class);
 
@@ -53,12 +52,13 @@ public class EditFileServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request,
+                         HttpServletResponse response) throws ServletException, IOException {
         log.info("get all items");
 
-        List<RowItem> items = XmlUtil.parseXml(repository.getContent());
-        req.setAttribute("items", items);
-        req.getRequestDispatcher("/editForm.jsp").forward(req, resp);
+        List<RowItem> items = repository.getAllItems();
+        request.setAttribute("items", items);
+        request.getRequestDispatcher("/editForm.jsp").forward(request, response);
     }
 
     private String getFileName(Part part) {

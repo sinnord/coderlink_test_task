@@ -2,25 +2,54 @@ package ru.sinnord.testtask.model;
 
 public class RowItem {
 
-    private final Integer number;
-    private final String name;
-    private final String value;
+    private Integer id;
+    private String name;
+    private String value;
+    private String newValue;
 
-    public RowItem(Integer number, String name, String value) {
-        this.number = number;
-        this.name = name;
-        this.value = value;
+    public Integer getId() {
+        return id;
     }
 
-    public Integer getNumber() {
-        return number;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getValue() {
         return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getNewValue() {
+        return newValue;
+    }
+
+    public void setNewValue(String newValue) {
+        this.newValue = newValue;
+    }
+
+    public boolean isNew() {
+        return id == null;
+    }
+
+    @Override
+    public String toString() {
+        return "RowItem{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", value='" + value + '\'' +
+                ", newValue='" + newValue + '\'' +
+                '}';
     }
 }
