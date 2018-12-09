@@ -29,8 +29,8 @@
             </tr>
         </c:forEach>
         </table>
-        <button type="submit">Save</button>
-        <button onclick="window.history.back()" type="button">Cancel</button>
+        <button type="submit">Сохранить</button>
+        <button onclick="window.history.back()" type="button">Отмена</button>
     </form>
 </section>
 </body>
